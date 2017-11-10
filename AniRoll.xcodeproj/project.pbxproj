@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C73CB761FB601CE00733C0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73CB751FB601CE00733C0D /* AppDelegate.swift */; };
+		2C73CB781FB601CE00733C0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73CB771FB601CE00733C0D /* ViewController.swift */; };
+		2C73CB7B1FB601CE00733C0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C73CB791FB601CE00733C0D /* Main.storyboard */; };
+		2C73CB7D1FB601CE00733C0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C73CB7C1FB601CE00733C0D /* Assets.xcassets */; };
+		2C73CB801FB601CE00733C0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C73CB7E1FB601CE00733C0D /* LaunchScreen.storyboard */; };
+		2C73CB8B1FB601CE00733C0D /* AniRollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73CB8A1FB601CE00733C0D /* AniRollTests.swift */; };
+		2C73CB961FB601CE00733C0D /* AniRollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73CB951FB601CE00733C0D /* AniRollUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C73CB871FB601CE00733C0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C73CB6A1FB601CE00733C0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C73CB711FB601CE00733C0D;
+			remoteInfo = AniRoll;
+		};
+		2C73CB921FB601CE00733C0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C73CB6A1FB601CE00733C0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C73CB711FB601CE00733C0D;
+			remoteInfo = AniRoll;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C73CB721FB601CE00733C0D /* AniRoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AniRoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C73CB751FB601CE00733C0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2C73CB771FB601CE00733C0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C73CB7A1FB601CE00733C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2C73CB7C1FB601CE00733C0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C73CB7F1FB601CE00733C0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2C73CB811FB601CE00733C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C73CB861FB601CE00733C0D /* AniRollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AniRollTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C73CB8A1FB601CE00733C0D /* AniRollTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniRollTests.swift; sourceTree = "<group>"; };
+		2C73CB8C1FB601CE00733C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C73CB911FB601CE00733C0D /* AniRollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AniRollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C73CB951FB601CE00733C0D /* AniRollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniRollUITests.swift; sourceTree = "<group>"; };
+		2C73CB971FB601CE00733C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C73CB6F1FB601CE00733C0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB831FB601CE00733C0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB8E1FB601CE00733C0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C73CB691FB601CE00733C0D = {
+			isa = PBXGroup;
+			children = (
+				2C73CB741FB601CE00733C0D /* AniRoll */,
+				2C73CB891FB601CE00733C0D /* AniRollTests */,
+				2C73CB941FB601CE00733C0D /* AniRollUITests */,
+				2C73CB731FB601CE00733C0D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C73CB731FB601CE00733C0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C73CB721FB601CE00733C0D /* AniRoll.app */,
+				2C73CB861FB601CE00733C0D /* AniRollTests.xctest */,
+				2C73CB911FB601CE00733C0D /* AniRollUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C73CB741FB601CE00733C0D /* AniRoll */ = {
+			isa = PBXGroup;
+			children = (
+				2C73CB751FB601CE00733C0D /* AppDelegate.swift */,
+				2C73CB771FB601CE00733C0D /* ViewController.swift */,
+				2C73CB791FB601CE00733C0D /* Main.storyboard */,
+				2C73CB7C1FB601CE00733C0D /* Assets.xcassets */,
+				2C73CB7E1FB601CE00733C0D /* LaunchScreen.storyboard */,
+				2C73CB811FB601CE00733C0D /* Info.plist */,
+			);
+			path = AniRoll;
+			sourceTree = "<group>";
+		};
+		2C73CB891FB601CE00733C0D /* AniRollTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C73CB8A1FB601CE00733C0D /* AniRollTests.swift */,
+				2C73CB8C1FB601CE00733C0D /* Info.plist */,
+			);
+			path = AniRollTests;
+			sourceTree = "<group>";
+		};
+		2C73CB941FB601CE00733C0D /* AniRollUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2C73CB951FB601CE00733C0D /* AniRollUITests.swift */,
+				2C73CB971FB601CE00733C0D /* Info.plist */,
+			);
+			path = AniRollUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C73CB711FB601CE00733C0D /* AniRoll */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C73CB9A1FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRoll" */;
+			buildPhases = (
+				2C73CB6E1FB601CE00733C0D /* Sources */,
+				2C73CB6F1FB601CE00733C0D /* Frameworks */,
+				2C73CB701FB601CE00733C0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AniRoll;
+			productName = AniRoll;
+			productReference = 2C73CB721FB601CE00733C0D /* AniRoll.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C73CB851FB601CE00733C0D /* AniRollTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C73CB9D1FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRollTests" */;
+			buildPhases = (
+				2C73CB821FB601CE00733C0D /* Sources */,
+				2C73CB831FB601CE00733C0D /* Frameworks */,
+				2C73CB841FB601CE00733C0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C73CB881FB601CE00733C0D /* PBXTargetDependency */,
+			);
+			name = AniRollTests;
+			productName = AniRollTests;
+			productReference = 2C73CB861FB601CE00733C0D /* AniRollTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C73CB901FB601CE00733C0D /* AniRollUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C73CBA01FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRollUITests" */;
+			buildPhases = (
+				2C73CB8D1FB601CE00733C0D /* Sources */,
+				2C73CB8E1FB601CE00733C0D /* Frameworks */,
+				2C73CB8F1FB601CE00733C0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C73CB931FB601CE00733C0D /* PBXTargetDependency */,
+			);
+			name = AniRollUITests;
+			productName = AniRollUITests;
+			productReference = 2C73CB911FB601CE00733C0D /* AniRollUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C73CB6A1FB601CE00733C0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Lech H. Conde";
+				TargetAttributes = {
+					2C73CB711FB601CE00733C0D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					2C73CB851FB601CE00733C0D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2C73CB711FB601CE00733C0D;
+					};
+					2C73CB901FB601CE00733C0D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2C73CB711FB601CE00733C0D;
+					};
+				};
+			};
+			buildConfigurationList = 2C73CB6D1FB601CE00733C0D /* Build configuration list for PBXProject "AniRoll" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C73CB691FB601CE00733C0D;
+			productRefGroup = 2C73CB731FB601CE00733C0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C73CB711FB601CE00733C0D /* AniRoll */,
+				2C73CB851FB601CE00733C0D /* AniRollTests */,
+				2C73CB901FB601CE00733C0D /* AniRollUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C73CB701FB601CE00733C0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C73CB801FB601CE00733C0D /* LaunchScreen.storyboard in Resources */,
+				2C73CB7D1FB601CE00733C0D /* Assets.xcassets in Resources */,
+				2C73CB7B1FB601CE00733C0D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB841FB601CE00733C0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB8F1FB601CE00733C0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C73CB6E1FB601CE00733C0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C73CB781FB601CE00733C0D /* ViewController.swift in Sources */,
+				2C73CB761FB601CE00733C0D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB821FB601CE00733C0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C73CB8B1FB601CE00733C0D /* AniRollTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C73CB8D1FB601CE00733C0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C73CB961FB601CE00733C0D /* AniRollUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C73CB881FB601CE00733C0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C73CB711FB601CE00733C0D /* AniRoll */;
+			targetProxy = 2C73CB871FB601CE00733C0D /* PBXContainerItemProxy */;
+		};
+		2C73CB931FB601CE00733C0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C73CB711FB601CE00733C0D /* AniRoll */;
+			targetProxy = 2C73CB921FB601CE00733C0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C73CB791FB601CE00733C0D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C73CB7A1FB601CE00733C0D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2C73CB7E1FB601CE00733C0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C73CB7F1FB601CE00733C0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C73CB981FB601CE00733C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2C73CB991FB601CE00733C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C73CB9B1FB601CE00733C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRoll/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRoll;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C73CB9C1FB601CE00733C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRoll/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRoll;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2C73CB9E1FB601CE00733C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRollTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRollTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AniRoll.app/AniRoll";
+			};
+			name = Debug;
+		};
+		2C73CB9F1FB601CE00733C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRollTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRollTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AniRoll.app/AniRoll";
+			};
+			name = Release;
+		};
+		2C73CBA11FB601CE00733C0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRollUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRollUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AniRoll;
+			};
+			name = Debug;
+		};
+		2C73CBA21FB601CE00733C0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6W9JT2TG2;
+				INFOPLIST_FILE = AniRollUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.mavels.AniRollUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AniRoll;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C73CB6D1FB601CE00733C0D /* Build configuration list for PBXProject "AniRoll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C73CB981FB601CE00733C0D /* Debug */,
+				2C73CB991FB601CE00733C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C73CB9A1FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRoll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C73CB9B1FB601CE00733C0D /* Debug */,
+				2C73CB9C1FB601CE00733C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C73CB9D1FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRollTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C73CB9E1FB601CE00733C0D /* Debug */,
+				2C73CB9F1FB601CE00733C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C73CBA01FB601CE00733C0D /* Build configuration list for PBXNativeTarget "AniRollUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C73CBA11FB601CE00733C0D /* Debug */,
+				2C73CBA21FB601CE00733C0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C73CB6A1FB601CE00733C0D /* Project object */;
+}
