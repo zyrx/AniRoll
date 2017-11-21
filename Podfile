@@ -7,6 +7,7 @@ target 'AniRoll' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'SnapKit', '~> 4.0.0'
 
   target 'AniRollTests' do
     inherit! :search_paths
