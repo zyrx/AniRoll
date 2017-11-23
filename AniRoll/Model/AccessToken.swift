@@ -17,6 +17,10 @@ class AccessToken: Object {
     @objc dynamic var expires_in: Int = 0
     @objc dynamic var refresh_token: String?
     
+    override static func primaryKey() -> String? {
+        return "access_token"
+    }
+    
     convenience init?(_ json: JSON) {
         guard let access_token = json["access_token"].string else {
             return nil

@@ -22,6 +22,10 @@ AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using
 search.
 
 ## Sections
+* My AniRoll
+* Anime
+* Manga
+* Social
 
 ### Register Form
 * username
@@ -29,63 +33,63 @@ search.
 * password
 * repeat password
 
-### Login Form
+### Login Form
 * email
 * password
 
 ### Browse Anime
 1. Year
-  2009 - 2018
+  * 2009 - 2018
 2. Season
-  Winter
-  Spring
-  Summer
-  Fall
+  * Winter
+  * Spring
+  * Summer
+  * Fall
 3. Status
-  Not Yet Aired
-  Currently Airing
-  Finished Airing
-  Cancelled
+  * Not Yet Aired
+  * Currently Airing
+  * Finished Airing
+  * Cancelled
 4. Type
-  Tv
-  Movie
-  Special
-  OVA
-  ONA
-  Tv Short
+  * Tv
+  * Movie
+  * Special
+  * OVA
+  * ONA
+  * Tv Short
 5. Sort
-  Score
-  Popularity
-  Start Date
-  End Date
-  Date Added
+  * Score
+  * Popularity
+  * Start Date
+  * End Date
+  * Date Added
 6. Genres
-  Action
-  Adventure
-  Comedy
-  Drama
-  Ecchi
-  Fantasy
-  Horror
-  Mahou Shoujo
-  Mecha
-  Music
-  Mystery
-  Psychological
-  Romance
-  Sci-Fi
-  Slice of Life
-  Sports
-  Supernatural
-  Thrille
+  * Action
+  * Adventure
+  * Comedy
+  * Drama
+  * Ecchi
+  * Fantasy
+  * Horror
+  * Mahou Shoujo
+  * Mecha
+  * Music
+  * Mystery
+  * Psychological
+  * Romance
+  * Sci-Fi
+  * Slice of Life
+  * Sports
+  * Supernatural
+  * Thrille
 7. Tags
-  Theme
-    ...
-  Cast
-    ...
-  Setting
-    ...
-  Technical
-    ...
-  Demographic
-    ...
+  * Theme
+  *   * ...
+  * Cast
+  *   * ...
+  * Setting
+  *   * ...
+  * Technical
+  *   * ...
+  * Demographic
+  *   * ...

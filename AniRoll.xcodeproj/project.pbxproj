@@ -36,6 +36,13 @@
 		2C73FE561FC4D4F500D7BAFD /* MainLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE551FC4D4F500D7BAFD /* MainLoadingActivity.swift */; };
 		2C73FE591FC4ED8700D7BAFD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE581FC4ED8700D7BAFD /* App.swift */; };
 		2C73FE5B1FC4F1ED00D7BAFD /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE5A1FC4F1ED00D7BAFD /* AlertController.swift */; };
+		2C73FE611FC50EDB00D7BAFD /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE601FC50EDB00D7BAFD /* AnimeViewController.swift */; };
+		2C73FE641FC50F3E00D7BAFD /* MangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE631FC50F3E00D7BAFD /* MangaViewController.swift */; };
+		2C73FE671FC50F5F00D7BAFD /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE661FC50F5F00D7BAFD /* SocialViewController.swift */; };
+		2C73FE6A1FC5EAA500D7BAFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE691FC5EAA500D7BAFD /* MainViewController.swift */; };
+		2C73FE6C1FC642B700D7BAFD /* MainViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE6B1FC642B600D7BAFD /* MainViewScrollView.swift */; };
+		2C73FE6F1FC662A300D7BAFD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE6E1FC662A300D7BAFD /* MenuViewController.swift */; };
+		2C73FE711FC66BBC00D7BAFD /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FE701FC66BBC00D7BAFD /* DashboardViewController.swift */; };
 		2C8867DB1FBA5BFB00CB63C3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867DA1FBA5BFB00CB63C3 /* User.swift */; };
 		2C8867DD1FBA685C00CB63C3 /* StringObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867DC1FBA685C00CB63C3 /* StringObject.swift */; };
 		2C8867E11FBA6B4400CB63C3 /* ListStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867E01FBA6B4400CB63C3 /* ListStats.swift */; };
@@ -105,6 +112,13 @@
 		2C73FE551FC4D4F500D7BAFD /* MainLoadingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoadingActivity.swift; sourceTree = "<group>"; };
 		2C73FE581FC4ED8700D7BAFD /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2C73FE5A1FC4F1ED00D7BAFD /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		2C73FE601FC50EDB00D7BAFD /* AnimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
+		2C73FE631FC50F3E00D7BAFD /* MangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewController.swift; sourceTree = "<group>"; };
+		2C73FE661FC50F5F00D7BAFD /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		2C73FE691FC5EAA500D7BAFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2C73FE6B1FC642B600D7BAFD /* MainViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewScrollView.swift; sourceTree = "<group>"; };
+		2C73FE6E1FC662A300D7BAFD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		2C73FE701FC66BBC00D7BAFD /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		2C8867DA1FBA5BFB00CB63C3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2C8867DC1FBA685C00CB63C3 /* StringObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringObject.swift; sourceTree = "<group>"; };
 		2C8867DE1FBA69D300CB63C3 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -202,6 +216,11 @@
 		2C6AA7231FB632F9009E5468 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C73FE6D1FC6628600D7BAFD /* Menu */,
+				2C73FE681FC5EA8300D7BAFD /* Main */,
+				2C73FE651FC50F4100D7BAFD /* Social */,
+				2C73FE621FC50EE500D7BAFD /* Manga */,
+				2C73FE5F1FC50EDB00D7BAFD /* Anime */,
 				2C73FE571FC4ED1600D7BAFD /* Dashboard */,
 				2C73FE4E1FC4C2DB00D7BAFD /* Login */,
 			);
@@ -288,8 +307,50 @@
 		2C73FE571FC4ED1600D7BAFD /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				2C73FE701FC66BBC00D7BAFD /* DashboardViewController.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		2C73FE5F1FC50EDB00D7BAFD /* Anime */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FE601FC50EDB00D7BAFD /* AnimeViewController.swift */,
+			);
+			path = Anime;
+			sourceTree = "<group>";
+		};
+		2C73FE621FC50EE500D7BAFD /* Manga */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FE631FC50F3E00D7BAFD /* MangaViewController.swift */,
+			);
+			path = Manga;
+			sourceTree = "<group>";
+		};
+		2C73FE651FC50F4100D7BAFD /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FE661FC50F5F00D7BAFD /* SocialViewController.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		2C73FE681FC5EA8300D7BAFD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FE691FC5EAA500D7BAFD /* MainViewController.swift */,
+				2C73FE6B1FC642B600D7BAFD /* MainViewScrollView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2C73FE6D1FC6628600D7BAFD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FE6E1FC662A300D7BAFD /* MenuViewController.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		532226D2DAD461FFF8E3DA49 /* Pods */ = {
@@ -604,13 +665,17 @@
 				2C73FE501FC4C2F700D7BAFD /* LoginViewTextFields.swift in Sources */,
 				2C1C8F3D1FBE654D00EBC638 /* WSReviews.swift in Sources */,
 				2C1C8F371FBE5FCB00EBC638 /* WSCharacters.swift in Sources */,
+				2C73FE711FC66BBC00D7BAFD /* DashboardViewController.swift in Sources */,
 				2C8867E11FBA6B4400CB63C3 /* ListStats.swift in Sources */,
 				2C8867EB1FBA717D00CB63C3 /* Character.swift in Sources */,
 				2C6AA7251FB63359009E5468 /* LoginViewController.swift in Sources */,
 				2C8867F11FBA751200CB63C3 /* Review.swift in Sources */,
 				2C1C8F2E1FBD00E400EBC638 /* WSAuthentication.swift in Sources */,
+				2C73FE6C1FC642B700D7BAFD /* MainViewScrollView.swift in Sources */,
 				2C1C8F3B1FBE641A00EBC638 /* WSStudio.swift in Sources */,
 				2C8867EF1FBA72EC00CB63C3 /* Studio.swift in Sources */,
+				2C73FE671FC50F5F00D7BAFD /* SocialViewController.swift in Sources */,
+				2C73FE641FC50F3E00D7BAFD /* MangaViewController.swift in Sources */,
 				2C73CB781FB601CE00733C0D /* ViewController.swift in Sources */,
 				2C1C8F3F1FBE6E7100EBC638 /* WSForum.swift in Sources */,
 				2C8867F51FBA78E600CB63C3 /* Manga.swift in Sources */,
@@ -624,6 +689,7 @@
 				2C1C8F321FBD242B00EBC638 /* WSUser.swift in Sources */,
 				2C1C8F351FBE1F7900EBC638 /* WSSeries.swift in Sources */,
 				2C8867ED1FBA726B00CB63C3 /* Staff.swift in Sources */,
+				2C73FE6F1FC662A300D7BAFD /* MenuViewController.swift in Sources */,
 				2C73FE5B1FC4F1ED00D7BAFD /* AlertController.swift in Sources */,
 				2C1C8F451FBE7AC700EBC638 /* Comment.swift in Sources */,
 				2C1C8F411FBE6ED100EBC638 /* Tag.swift in Sources */,
@@ -632,6 +698,8 @@
 				2C73FE521FC4D22000D7BAFD /* Extensions.swift in Sources */,
 				2C73FE591FC4ED8700D7BAFD /* App.swift in Sources */,
 				2C1C8F301FBD0BA900EBC638 /* AccessToken.swift in Sources */,
+				2C73FE611FC50EDB00D7BAFD /* AnimeViewController.swift in Sources */,
+				2C73FE6A1FC5EAA500D7BAFD /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
