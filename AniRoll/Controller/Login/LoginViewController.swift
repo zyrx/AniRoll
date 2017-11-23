@@ -90,7 +90,7 @@ class LoginViewController: UIViewController, WSAuthenticationDelegate {
             try realm.write {
                 realm.add(accessToken)
             }
-            let dashboard = storyboard.instantiateViewController(withIdentifier: "Dashboard")
+            let dashboard = storyboard.instantiateViewController(withIdentifier: "MainView")
             self.present(dashboard, animated: true, completion: nil)
         } catch {
             AlertController.alert(title: "", message: "The application encountered an internal error or misconfiguration and was unable to complete your request. ")
