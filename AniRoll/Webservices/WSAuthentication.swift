@@ -10,8 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-@objc protocol WSAuthenticationDelegate: WSResponseProtocol {
-    //func wsAuthenticationDelegate(authorizationCode: String?)
+protocol WSAuthenticationDelegate: WSResponseProtocol {
     func wsAuthenticationDelegate(accessToken: AccessToken?)
 }
 
@@ -72,16 +71,17 @@ class WSAuthentication: WSBase {
             callback(nil)
             return
         }
-        self.manager.request(self.host + path, method: .get, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             callback(json.string)
             // self.delegate?.wsAuthenticationDelegate(authorizationCode: json.string)
         }
@@ -107,7 +107,8 @@ class WSAuthentication: WSBase {
         if let auth = auth {
             print(auth)
         }
-        self.manager.request(self.host + path, method: .post, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .post, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return

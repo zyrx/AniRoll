@@ -29,16 +29,17 @@ class WSForum: WSBase {
     func getPosts(type postType: PostType, page: Int = 0) {
         let path = String(format: "forum/%@", postType.rawValue)
         let parameters: Parameters = ["page": page]
-        self.manager.request(self.host + path, method: .get, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -56,16 +57,17 @@ class WSForum: WSBase {
             "manga": manga ?? "",
             "page": page ?? 0
         ]
-        self.manager.request(self.host + path, method: .get, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -76,16 +78,17 @@ class WSForum: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/forum.html#thread
     func getThread(id: Int) {
         let path = String(format: "forum/thread/%d", id)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -105,16 +108,17 @@ class WSForum: WSBase {
             "tags_anime": thread.tags_anime,
             "tags_manga": thread.tags_manga
         ]
-        self.manager.request(self.host + path, method: id > 0 ? .put : .post, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: id > 0 ? .put : .post, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -125,16 +129,17 @@ class WSForum: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/forum.html#remove-thread-delete
     func removeThread(id: Int) {
         let path = String(format: "forum/thread/%d", id)
-        self.manager.request(self.host + path, method: .delete, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .delete, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -146,16 +151,17 @@ class WSForum: WSBase {
     func toggleSubscription(id: Int) {
         let path = String(format: "forum/thread/%d", id)
         let parameters: Parameters = ["thread_id": id,]
-        self.manager.request(self.host + path, method: .post, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .post, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -172,16 +178,17 @@ class WSForum: WSBase {
             "comment": comment.comment,
             "reply_id": comment.reply_id
         ]
-        self.manager.request(self.host + path, method: id > 0 ? .put : .post, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: id > 0 ? .put : .post, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -192,16 +199,17 @@ class WSForum: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/forum.html#remove-comment-delete
     func removeComment(id: Int) {
         let path = String(format: "forum/thread/%d", id)
-        self.manager.request(self.host + path, method: .delete, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .delete, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -215,16 +223,17 @@ class WSForum: WSBase {
             return
         }
         let path = String(format: "forum/search/%@", query)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)

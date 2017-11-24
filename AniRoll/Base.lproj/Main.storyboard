@@ -89,7 +89,7 @@
         <!--Main View Controller-->
         <scene sceneID="IBE-fw-uNL">
             <objects>
-                <viewController storyboardIdentifier="MainView" id="AQr-T9-zEh" customClass="MainViewController" customModule="AniRoll" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainView" modalTransitionStyle="crossDissolve" id="AQr-T9-zEh" customClass="MainViewController" customModule="AniRoll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dQC-lV-Ugk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,6 +589,7 @@
                             <constraint firstItem="8bd-Lf-J0V" firstAttribute="top" secondItem="bCw-IW-wgT" secondAttribute="top" id="k2Z-Ab-P8w"/>
                             <constraint firstAttribute="trailing" secondItem="8bd-Lf-J0V" secondAttribute="trailing" id="ogI-wp-cgc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="waw-QH-XM2"/>
                     </view>
                     <navigationItem key="navigationItem" id="171-pd-gPX"/>
                     <connections>
@@ -709,6 +710,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5r5-OT-Int" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="d7y-Bz-wuL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.090196078430000007" green="0.10980392160000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.090196078430000007" green="0.10980392160000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

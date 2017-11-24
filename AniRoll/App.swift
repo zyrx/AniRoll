@@ -12,6 +12,7 @@ import RealmSwift
 class App: NSObject {
     static let shared = App()
     var realmConfiguration: Realm.Configuration!
+    var accessToken: AccessToken?
     
     private override init() {
         super.init()
@@ -33,7 +34,12 @@ class App: NSObject {
         }
         var config = Realm.Configuration()
         config.objectTypes = [
-            AccessToken.self
+            //AccessToken.self
+            StringObject.self,
+            User.self,
+            Serie.self,
+            ScoreDistribution.self,
+            ListStats.self
         ]
         // Use the default directory, but replace the filename with the username
         if(inMemory) {

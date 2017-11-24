@@ -10,7 +10,6 @@
 		13A1EDF994552AF1212E27BE /* Pods_AniRollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8303B4E1F1E7CC475CA73534 /* Pods_AniRollUITests.framework */; };
 		2C1C8F2C1FBCFC9200EBC638 /* WSBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C8F2B1FBCFC9200EBC638 /* WSBase.swift */; };
 		2C1C8F2E1FBD00E400EBC638 /* WSAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C8F2D1FBD00E400EBC638 /* WSAuthentication.swift */; };
-		2C1C8F301FBD0BA900EBC638 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C8F2F1FBD0BA900EBC638 /* AccessToken.swift */; };
 		2C1C8F321FBD242B00EBC638 /* WSUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C8F311FBD242B00EBC638 /* WSUser.swift */; };
 		2C1C8F331FBDFA3400EBC638 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867DE1FBA69D300CB63C3 /* Serie.swift */; };
 		2C1C8F351FBE1F7900EBC638 /* WSSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C8F341FBE1F7800EBC638 /* WSSeries.swift */; };
@@ -56,6 +55,7 @@
 		2C8867F11FBA751200CB63C3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867F01FBA751200CB63C3 /* Review.swift */; };
 		2C8867F31FBA76A000CB63C3 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867F21FBA76A000CB63C3 /* Anime.swift */; };
 		2C8867F51FBA78E600CB63C3 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8867F41FBA78E600CB63C3 /* Manga.swift */; };
+		2C98D4261FC79FB900284052 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C98D4251FC79FB900284052 /* AccessToken.swift */; };
 		8319349CED12F54F509A9640 /* Pods_AniRoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7512248E1ECDC3EBA33248 /* Pods_AniRoll.framework */; };
 		E98AC13570F33C611911B649 /* Pods_AniRollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2FD403D318383DBA92FAEA /* Pods_AniRollTests.framework */; };
 /* End PBXBuildFile section */
@@ -81,7 +81,7 @@
 		2C057DE6F152AD972954064E /* Pods-AniRollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniRollTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AniRollTests/Pods-AniRollTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C1C8F2B1FBCFC9200EBC638 /* WSBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBase.swift; sourceTree = "<group>"; };
 		2C1C8F2D1FBD00E400EBC638 /* WSAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSAuthentication.swift; sourceTree = "<group>"; };
-		2C1C8F2F1FBD0BA900EBC638 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		2C1C8F2F1FBD0BA900EBC638 /* _AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _AccessToken.swift; sourceTree = "<group>"; };
 		2C1C8F311FBD242B00EBC638 /* WSUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSUser.swift; sourceTree = "<group>"; };
 		2C1C8F341FBE1F7800EBC638 /* WSSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSeries.swift; sourceTree = "<group>"; };
 		2C1C8F361FBE5FCB00EBC638 /* WSCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSCharacters.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 		2C8867F01FBA751200CB63C3 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		2C8867F21FBA76A000CB63C3 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		2C8867F41FBA78E600CB63C3 /* Manga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		2C98D4251FC79FB900284052 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		4C93CD9042BA2BAF3C7F4B56 /* Pods-AniRoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniRoll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AniRoll/Pods-AniRoll.debug.xcconfig"; sourceTree = "<group>"; };
 		5D2FD403D318383DBA92FAEA /* Pods_AniRollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AniRollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8303B4E1F1E7CC475CA73534 /* Pods_AniRollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AniRollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,10 +206,11 @@
 				2C8867F01FBA751200CB63C3 /* Review.swift */,
 				2C8867F21FBA76A000CB63C3 /* Anime.swift */,
 				2C8867F41FBA78E600CB63C3 /* Manga.swift */,
-				2C1C8F2F1FBD0BA900EBC638 /* AccessToken.swift */,
+				2C1C8F2F1FBD0BA900EBC638 /* _AccessToken.swift */,
 				2C1C8F401FBE6ED100EBC638 /* Tag.swift */,
 				2C1C8F421FBE772600EBC638 /* Thread.swift */,
 				2C1C8F441FBE7AC700EBC638 /* Comment.swift */,
+				2C98D4251FC79FB900284052 /* AccessToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -697,9 +699,9 @@
 				2C1C8F391FBE624F00EBC638 /* WSStaff.swift in Sources */,
 				2C73FE521FC4D22000D7BAFD /* Extensions.swift in Sources */,
 				2C73FE591FC4ED8700D7BAFD /* App.swift in Sources */,
-				2C1C8F301FBD0BA900EBC638 /* AccessToken.swift in Sources */,
 				2C73FE611FC50EDB00D7BAFD /* AnimeViewController.swift in Sources */,
 				2C73FE6A1FC5EAA500D7BAFD /* MainViewController.swift in Sources */,
+				2C98D4261FC79FB900284052 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

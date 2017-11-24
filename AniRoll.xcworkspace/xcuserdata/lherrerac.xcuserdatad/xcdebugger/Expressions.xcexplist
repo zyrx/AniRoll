@@ -3,6 +3,30 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "AccessToken.init(_:):AccessToken.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.expirationDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in WSSerie.getSeries(type:user:):WSSeries.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.headers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WSUser.getUser(id:):WSUser.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.headers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "WSAuthentication.getAccess(using:):WSAuthentication.swift">
          <PersistentStrings>
             <PersistentString
