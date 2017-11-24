@@ -2,27 +2,30 @@
 //  AccessToken.swift
 //  AniRoll
 //
-//  Created by Lech H. Conde on 11/23/17.
+//  Created by Lech H. Conde on 11/15/17.
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
 import UIKit
+import RealmSwift
 import SwiftyJSON
 
-struct AccessToken {
-    var access_token: String
-    var token_type: String
-    var expires: Int
-    var expires_in: Int
-    var refresh_token: String?
-    var expirationDate: Date {
-        return Date(timeIntervalSince1970: Double(self.expires))
+class AccessToken: Object {
+    @objc dynamic var access_token: String = ""
+    @objc dynamic var token_type: String = ""
+    @objc dynamic var expires: Int = 0
+    @objc dynamic var expires_in: Int = 0
+    @objc dynamic var refresh_token: String?
+    
+    override static func primaryKey() -> String? {
+        return "access_token"
     }
     
-    init?(_ json: JSON) {
+    convenience init?(_ json: JSON) {
         guard let access_token = json["access_token"].string else {
             return nil
         }
+        self.init()
         self.access_token = access_token
         self.token_type = json["token_type"].stringValue
         self.expires = json["expires"].intValue
@@ -30,3 +33,4 @@ struct AccessToken {
         self.refresh_token = json["refresh_token"].string
     }
 }
+

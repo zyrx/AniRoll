@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var visualEffect: UIVisualEffectView!
     
+    var accessToken: AccessToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

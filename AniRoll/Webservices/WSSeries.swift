@@ -23,18 +23,19 @@ class WSSerie: WSBase {
     
     /// Basic - Returns a series model.
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#basic
-    func getSeries(type serieType: SerieType, id: Int) {
-        let path = String(format: "%@/%d/%@", serieType.name, id)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+    func getSeries(type serieType: SerieType, user id: String) {
+        let path = String(format: "%@/%@", serieType.name, id)
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -51,18 +52,19 @@ class WSSerie: WSBase {
     ///    * Studios (anime)
     ///    * External links (anime)
     ///   @link http://anilist-api.readthedocs.io/en/latest/series.html#page
-    func getPage(series: String, id: Int) {
-        let path = String(format: "%@/%d/%@", series, id)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+    func getPage(series: String, user id: String) {
+        let path = String(format: "%@/%@/%@", series, id)
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -73,18 +75,19 @@ class WSSerie: WSBase {
     ///   - Returns series model with Small model characters (ordered by main role)
     ///     with small model actors. Small model staff.
     ///   @link http://anilist-api.readthedocs.io/en/latest/series.html#characters-staff
-    func getCharacters(type characterType: CharacterType, series: String, id: Int) {
-        let path = String(format: "%@/%d/%@", series, id, characterType.rawValue)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+    func getCharacters(type characterType: CharacterType, series: String, user id: String) {
+        let path = String(format: "%@/%@/%@", series, id, characterType.rawValue)
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -95,18 +98,19 @@ class WSSerie: WSBase {
     ///    * Key: Episode number
     ///    * Value: Airing Time
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#airing-anime-only
-    func airing(id: Int) {
-        let path = String(format: "anime/%d/airing", id)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+    func airing(user id: String) {
+        let path = String(format: "anime/%@/airing", id)
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -129,16 +133,17 @@ class WSSerie: WSBase {
             "full_page": "true",
             "page": 0
         ]
-        self.manager.request(self.host + path, method: .get, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -160,16 +165,17 @@ class WSSerie: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#genre-list
     func genreList(_ callback: @escaping ([String]) -> Void) {
         let path = "genre_list"
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             var genres = [String]()
             for item in json.arrayValue {
                 if let genre = item.string {
@@ -186,16 +192,17 @@ class WSSerie: WSBase {
     func toggleFavourite(type serieType: SerieType, id: Int) {
         let path = String(format: "%@/favourite", serieType.name)
         let parameters: Parameters = ["id": id]
-        self.manager.request(self.host + path, method: .post, parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: .post, parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -209,16 +216,17 @@ class WSSerie: WSBase {
             return
         }
         let path = String(format: "%@/search/%@", serieType.name, query)
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             var users = [User]()
             for item in json.arrayValue {
                 if let user = User(item) {

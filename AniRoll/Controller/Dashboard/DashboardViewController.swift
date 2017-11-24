@@ -7,24 +7,74 @@
 //
 
 import UIKit
+import RealmSwift
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, WSUserDelegate {
+    
+    let wsUser = WSUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.wsUser.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LoadingActivity.show(text: "Downloading...", disableUI: true)
+        self.wsUser.getUser(id: "zyrx")
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func toggleMenu(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
     }
-
+    
+    // MARK: - WSUserDelegate
+    func wsUserDelegate(user: User?) {
+        LoadingActivity.hide()
+        guard let user = user else {
+             AlertController.alert(title: "", message: "The user doesn't exist. Please try again.")
+            return
+        }
+        do {
+            let realm = try Realm(configuration: App.shared.realmConfiguration)
+            try realm.write {
+                realm.add(user)
+            }
+        } catch {
+             AlertController.alert(title: "", message: "The application encountered an internal error or misconfiguration and was unable to complete your request.")
+        }
+    }
+    
+    func wsUserDelegate(users: [User]) {
+        // Do stuff
+    }
+    
+    func wsUserDelegate(authorizationCode: String?) {
+        // Do stuff
+    }
+    
+    func onResponseError(error: NSError) {
+        LoadingActivity.hide()
+        if let message = error.userInfo["message"] as? String {
+            AlertController.alert(title: "", message: message)
+            return
+        }
+        switch error.code {
+        case NSURLErrorCancelled, NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost: break
+        case NSURLErrorTimedOut, NSURLErrorCannotFindHost, NSURLErrorCannotConnectToHost:
+            AlertController.alert(title: "Se agotó el tiempo de espera", message: "El servidor tardó demasiado en responder")
+        default:
+            let title = "Error (\(error.code)) en el servidor"
+            print("Server error: \(error.localizedDescription)")
+            AlertController.alert(title: title, message: "Favor de contactar al Administrador.")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

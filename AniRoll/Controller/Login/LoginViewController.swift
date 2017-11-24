@@ -85,15 +85,29 @@ class LoginViewController: UIViewController, WSAuthenticationDelegate {
             AlertController.alert(title: "", message: "Invalid login information, please try again.")
             return
         }
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(accessToken)
-            }
-            let dashboard = storyboard.instantiateViewController(withIdentifier: "MainView")
-            self.present(dashboard, animated: true, completion: nil)
-        } catch {
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "MainView") as? MainViewController else {
             AlertController.alert(title: "", message: "The application encountered an internal error or misconfiguration and was unable to complete your request. ")
+            return
+        }
+        App.shared.accessToken = accessToken
+        viewController.accessToken = accessToken
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func onResponseError(error: NSError) {
+        LoadingActivity.hide()
+        if let message = error.userInfo["message"] as? String {
+            AlertController.alert(title: "", message: message)
+            return
+        }
+        switch error.code {
+        case NSURLErrorCancelled, NSURLErrorNotConnectedToInternet, NSURLErrorNetworkConnectionLost: break
+        case NSURLErrorTimedOut, NSURLErrorCannotFindHost, NSURLErrorCannotConnectToHost:
+            AlertController.alert(title: "Se agotó el tiempo de espera", message: "El servidor tardó demasiado en responder")
+        default:
+            let title = "Error (\(error.code)) en el servidor"
+            print("Server error: \(error.localizedDescription)")
+            AlertController.alert(title: title, message: "Favor de contactar al Administrador.")
         }
     }
     

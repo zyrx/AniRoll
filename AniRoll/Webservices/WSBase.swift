@@ -21,13 +21,18 @@ import SwiftyJSON
     let client: String = "zyrx-wtk52"
     let secret: String = "s6H7jYG1YovNzaK0e4ypUn"
     let redirect: String = "aniroll://"
-    var accessToken: String?
+    var access_token: String {
+        guard let accessToken = App.shared.accessToken else {
+            return ""
+        }
+        return accessToken.access_token
+    }
     var headers: HTTPHeaders? {
-        guard let accessToken = self.accessToken else {
+        guard !self.access_token.isEmpty else {
             return nil
         }
         return [
-        "Authorization": "Bearer \(accessToken)",
+        "Authorization": "Bearer \(access_token)",
         "Content-Type": "application/x-www-form-urlencoded"
         ]
     }

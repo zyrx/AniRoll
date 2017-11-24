@@ -24,16 +24,17 @@ class WSUserLists: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/lists.html#user-lists
     func getUserList(user id: Int, type serieType: SerieType, raw: Bool = false) {
         let path = String(format: "user/%d/%@", id, serieType.name) + (raw ? "/raw" : "")
-        self.manager.request(self.host + path, method: .get, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             var list = [Serie]()
             for item in json.arrayValue {
                 if let serie = Serie(item) {
@@ -64,16 +65,17 @@ class WSUserLists: WSBase {
                 "custom_lists": serie.custom_lists,
                 "hidden_default": serie.hidden_default
             ]
-        self.manager.request(self.host + path, method: (id > 0 ? .put : .post), parameters: parameters).responseJSON { response in
+        self.manager.request(self.host + path, method: (id > 0 ? .put : .post), parameters: parameters, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             // @TODO: Proper use of value
             print(value)
             print(json.stringValue)
@@ -84,16 +86,17 @@ class WSUserLists: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/lists.html#remove-entry-delete
     func removeEntry(type serieType: SerieType, id: Int) {
         let path = String(format: "%@/%d", serieType.name, id)
-        self.manager.request(self.host + path, method: .delete, parameters: nil).responseJSON { response in
+        self.manager.request(self.host + path, method: .delete, parameters: nil, headers: self.headers)
+            .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
                 return
             }
-            guard let value = response.result.value as? String else {
+            guard let value = response.result.value else {
                 self.delegate?.onResponseError?(error: NSError(domain: self.host, code: -1, userInfo: ["message": "No hay respuesta del servidor"]))
                 return
             }
-            let json = JSON(parseJSON: value)
+            let json = JSON(value)
             self.delegate?.wsUserDelegate?(removed: json.boolValue, type: serieType, id: id)
         }
     }
