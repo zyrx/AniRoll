@@ -36,6 +36,10 @@ class Serie: Object {
     @objc dynamic var updated_at: Int = 0
     @objc dynamic var score_distribution: ScoreDistribution?
     @objc dynamic var list_stats: ListStats?
+    @objc dynamic var lastUpdate: Date = Date()
+    var `type`: SerieType? {
+        return SerieType.init(from: self.series_type)
+    }
     
     override static func primaryKey() -> String? {
         return "id"
@@ -57,8 +61,16 @@ class Serie: Object {
         self.end_date_fuzzy = json["end_date_fuzzy"].intValue
         self.season = json["season"].intValue
         self.desc = json["description"].string
-        //self.synonyms = json["synonyms"].stringValue
-        //self.genres = json["genres"].stringValue
+        for item in json["synonyms"].arrayValue {
+            if let synonym = item.string {
+                self.synonyms.append(StringObject(synonym))
+            }
+        }
+        for item in json["genres"].arrayValue {
+            if let genre = item.string {
+                self.genres.append(StringObject(genre))
+            }
+        }
         self.adult = json["adult"].boolValue
         self.average_score = json["average_score"].doubleValue
         self.popularity = json["popularity"].intValue
@@ -68,8 +80,12 @@ class Serie: Object {
         self.image_url_lge = json["image_url_lge"].stringValue
         self.image_url_banner = json["image_url_banner"].string
         self.updated_at = json["updated_at"].intValue
-        //self.score_distribution = json["score_distribution"].stringValue
-        //self.list_stats = json["list_stats"].stringValue
+        if let score_distribution = ScoreDistribution(json["score_distribution"]) {
+            self.score_distribution = score_distribution
+        }
+        if let list_stats = ListStats(json["list_stats"]) {
+            self.list_stats = list_stats
+        }
     }
 }
 
@@ -109,9 +125,24 @@ struct NewSerie {
     case anime, manga
     var name: String {
         switch self {
+        case .anime: return "anime"
+        case .manga: return "manga"
+        }
+    }
+    var list: String {
+        switch self {
         case .anime: return "animelist"
         case .manga: return "mangalist"
         }
+    }
+    
+    static func `init`(from string:String) -> SerieType? {
+        var i = 0
+        while let item = SerieType(rawValue: i) {
+            if item.name == string { return item }
+            i += 1
+        }
+        return nil
     }
 }
 

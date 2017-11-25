@@ -9,5 +9,7 @@
 import UIKit
 
 class SerieCollectionViewCell: UICollectionViewCell {
-    
+    @IBOutlet weak var serieImageView: UIImageView!
+    @IBOutlet weak var serieTitleLabel: UILabel!
+    @IBOutlet weak var serieDescriptionLabel: UILabel!
 }

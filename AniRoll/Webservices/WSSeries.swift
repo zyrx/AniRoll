@@ -10,16 +10,17 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-protocol WSSerieDelegate: WSResponseProtocol {
-    
+@objc protocol WSSeriesDelegate: WSResponseProtocol {
+    @objc optional func wsSeriesDelegate(genres: [Genre])
+    @objc optional func wsSeriesDelegate(series: [Serie], type: SerieType)
 }
 
 /// WSSerie - Series Manager
 /// A series is either an anime or manga. {series_type} is either ‘anime’ or ‘manga’.
 /// @link http://anilist-api.readthedocs.io/en/latest/series.htm
-class WSSerie: WSBase {
+class WSSeries: WSBase {
     
-    var delegate: WSSerieDelegate?
+    var delegate: WSSeriesDelegate?
     
     /// Basic - Returns a series model.
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#basic
@@ -121,6 +122,7 @@ class WSSerie: WSBase {
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#browse
     func browse(type serieType: SerieType) {
         let path = String(format: "browse/%@", serieType.name)
+        /*
         let parameters: Parameters = [
             "year": "2014",
             "season": "winter", // SerieSeason
@@ -133,7 +135,8 @@ class WSSerie: WSBase {
             "full_page": "true",
             "page": 0
         ]
-        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
+        */
+        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
             .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
@@ -144,9 +147,13 @@ class WSSerie: WSBase {
                 return
             }
             let json = JSON(value)
-            // @TODO: Proper use of value
-            print(value)
-            print(json.stringValue)
+            var series = [Serie]()
+            for item in json.arrayValue {
+                if let serie = Serie(item) {
+                    series.append(serie)
+                }
+            }
+            self.delegate?.wsSeriesDelegate?(series: series, type: serieType)
         }
 //        Url Parms:
 //        year           : 4 digit year e.g. "2014"
@@ -163,7 +170,7 @@ class WSSerie: WSBase {
     
     /// Genre List - List of genres for use with browse queries
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#genre-list
-    func genreList(_ callback: @escaping ([String]) -> Void) {
+    func genreList() {
         let path = "genre_list"
         self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
             .responseJSON { response in
@@ -176,14 +183,13 @@ class WSSerie: WSBase {
                 return
             }
             let json = JSON(value)
-            var genres = [String]()
+            var genres = [Genre]()
             for item in json.arrayValue {
-                if let genre = item.string {
+                if let genre = Genre(item) {
                     genres.append(genre)
                 }
             }
-            // @TODO: Validate use of value
-            callback(genres)
+            self.delegate?.wsSeriesDelegate?(genres: genres)
         }
     }
     
