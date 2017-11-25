@@ -8,14 +8,46 @@
 
 import UIKit
 import RealmSwift
+import AlamofireImage
 
-class AnimeViewController: UIViewController, WSSerieDelegate {
+class AnimeViewController: UIViewController, WSSeriesDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    let wsSerie = WSSerie()
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let serieType: SerieType = .anime
+    let wsSeries = WSSeries()
+    var series: Results<Serie>?
+    var token: NotificationToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.wsSerie.delegate = self
+        self.wsSeries.delegate = self
+        do {
+            let realm = try Realm(configuration: App.shared.realmConfiguration)
+            let series = realm.objects(Serie.self).filter("series_type == %@", serieType.name)
+            self.series = series
+            self.token = series.observe { [weak self] (changes: RealmCollectionChange) in
+                guard let collectionView = self?.collectionView else { return }
+                switch changes {
+                case .initial:
+                    collectionView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    collectionView.performBatchUpdates({
+                        collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+                        collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0)}))
+                        collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+                    }, completion: nil)
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+            guard let serie = series.first, Date().hours(from: serie.lastUpdate) < 24 else {
+                self.wsSeries.browse(type: self.serieType)
+                return
+            }
+        } catch {
+            print("Database error")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +60,6 @@ class AnimeViewController: UIViewController, WSSerieDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.wsSerie.getSeries(type: .anime, user: "zyrx")
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +70,19 @@ class AnimeViewController: UIViewController, WSSerieDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
     }
 
-    // MARK: - WSSerieDelegate
+    // MARK: - WSSeriesDelegate
+    func wsSeriesDelegate(series: [Serie], type: SerieType) {
+        guard series.count > 0 else { return }
+        do {
+            let realm = try Realm(configuration: App.shared.realmConfiguration)
+            try realm.write {
+                realm.add(series, update: true)
+            }
+        } catch {
+            print("Database error")
+        }
+    }
+    
     func onResponseError(error: NSError) {
         LoadingActivity.hide()
         if let message = error.userInfo["message"] as? String {
@@ -57,14 +100,25 @@ class AnimeViewController: UIViewController, WSSerieDelegate {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - UICollectionViewDataSource
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.series?.count ?? 0
     }
-    */
-
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SerieViewCell", for: indexPath) as! SerieCollectionViewCell
+        cell.serieTitleLabel.text = self.series?[indexPath.row].title_romaji
+        cell.serieDescriptionLabel.text = self.series?[indexPath.row].desc
+        if let url = URL(string: self.series?[indexPath.row].image_url_lge ?? "") {
+            cell.serieImageView.af_setImage(withURL: url)
+        }
+        return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Do stuff
+    }
 }

@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AniRoll/Controller/Anime/AnimeViewController.swift"
-            timestampString = "533181541.982069"
+            timestampString = "533266287.610127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -153,29 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AniRoll/Webservices/WSSeries.swift"
-            timestampString = "533181541.98211"
+            filePath = "AniRoll/Controller/Manga/MangaViewController.swift"
+            timestampString = "533266287.610254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "getSeries(type:user:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AniRoll/Webservices/WSSeries.swift"
-            timestampString = "533181541.982408"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "getSeries(type:user:)"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "wsSeriesDelegate(series:type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

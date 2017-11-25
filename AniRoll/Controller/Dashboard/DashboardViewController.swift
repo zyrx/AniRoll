@@ -18,13 +18,20 @@ class DashboardViewController: UIViewController, WSUserDelegate {
         self.wsUser.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let accessToken = App.shared.accessToken, accessToken.expirationDate > Date() else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         LoadingActivity.show(text: "Downloading...", disableUI: true)
         self.wsUser.getUser(id: "zyrx")
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -43,7 +50,7 @@ class DashboardViewController: UIViewController, WSUserDelegate {
         do {
             let realm = try Realm(configuration: App.shared.realmConfiguration)
             try realm.write {
-                realm.add(user)
+                realm.add(user, update: true)
             }
         } catch {
              AlertController.alert(title: "", message: "The application encountered an internal error or misconfiguration and was unable to complete your request.")

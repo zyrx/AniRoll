@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import RealmSwift
 
-class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MenuViewController: UIViewController, WSSeriesDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    let wsSeries = WSSeries()
+
+    var genres: Results<Genre>?
+    var token: NotificationToken?
     
     let menuOptions: [(title: String, image: String)] = [
         ("Home", "icon-home"),
@@ -26,8 +31,33 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.layer.shadowColor = UIColor.black.cgColor
+        self.wsSeries.delegate = self
+        do {
+            let realm = try Realm(configuration: App.shared.realmConfiguration)
+            let genres = realm.objects(Genre.self)
+            self.genres = genres
+            self.token = genres.observe { [weak self] (changes: RealmCollectionChange) in
+                guard let tableView = self?.tableView else { return }
+                switch changes {
+                case .initial:
+                    tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    tableView.beginUpdates()
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 1) }), with: .automatic)
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 1)}), with: .automatic)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 1) }), with: .automatic)
+                    tableView.endUpdates()
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+            guard let genre = genres.first, Date().hours(from: genre.lastUpdate) < 24 else {
+                self.wsSeries.genreList()
+                return
+            }
+        } catch {
+            print("Database error")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,18 +66,37 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - UITableViewDataSource
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.menuOptions.count
+        switch section {
+        case 0:
+            return self.menuOptions.count
+        case 1:
+            return self.genres?.count ?? 0
+        default:
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOptionCell")!
-        cell.textLabel?.text = menuOptions[indexPath.row].title
-        cell.imageView?.image = UIImage(named: menuOptions[indexPath.row].image)
+        switch indexPath.section {
+        case 0:
+            cell.textLabel?.text = menuOptions[indexPath.row].title
+            cell.imageView?.image = UIImage(named: menuOptions[indexPath.row].image)
+        case 1:
+            cell.textLabel?.text = self.genres?[indexPath.row].name
+            cell.imageView?.image = nil
+        default:
+            break
+        }
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 1 ? "Genres" : nil
     }
     
     // MARK: - UITableViewDelegate
@@ -59,5 +108,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Do stuff
+    }
+    
+    // MARK: - WSSeriesDelegate
+    func wsSeriesDelegate(genres: [Genre]) {
+        guard genres.count > 0 else { return }
+        do {
+            let realm = try Realm(configuration: App.shared.realmConfiguration)
+            try realm.write {
+                // @TODO: Remove genres first
+                realm.add(genres, update: true)
+            }
+        } catch {
+            print("Database error")
+        }
     }
 }
