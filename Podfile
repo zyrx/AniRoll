@@ -5,6 +5,7 @@ target 'AniRoll' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
   pod 'SnapKit', '~> 4.0.0'
