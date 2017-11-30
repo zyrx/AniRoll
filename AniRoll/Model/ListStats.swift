@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 import SwiftyJSON
 
+/// List Stats
+/// @link http://anilist-api.readthedocs.io/en/latest/series.html#list-stats
 class ListStats: Object {
     @objc dynamic var completed: Int = 0
     @objc dynamic var on_hold: Int = 0
@@ -27,5 +29,11 @@ class ListStats: Object {
         self.dropped = json["dropped"].intValue
         self.plan_to_watch = json["plan_to_watch"].intValue
         self.watching = json["watching"].intValue
+    }
+    var toString: String {
+        return String(format:
+            "Completed: %@, On hold: %@, Dropped: %@, Plan to watch: %@, Watching: %@",
+            self.completed, self.on_hold, self.dropped, self.plan_to_watch, self.watching
+        )
     }
 }

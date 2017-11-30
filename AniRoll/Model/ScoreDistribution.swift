@@ -38,4 +38,10 @@ class ScoreDistribution: Object {
         self._90 = json["90"].intValue
         self._100 = json["100"].intValue
     }
+    var toString: String {
+        return String(format:
+            "[10: %d], [20: %d], [30: %d], [40: %d], [50: %d], [60: %d], [70: %d], [80: %d], [90: %d], [100: %d]",
+            self._10, self._20, self._30, self._40, self._50, self._60, self._70, self._80, self._90, self._100
+        )
+    }
 }
