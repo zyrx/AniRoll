@@ -28,6 +28,13 @@ extension UIView {
 }
 
 extension Date {
+    static let formatter = DateFormatter()
+    
+    func toString(dateFormat format: String) -> String {
+        Date.formatter.dateFormat = format
+        return  Date.formatter.string(from: self)
+    }
+    
     func years(from: Date) -> Int {
         return Calendar.current.dateComponents([.year], from: from, to: self).year ?? -1
     }
@@ -88,5 +95,20 @@ extension Date {
         dateComponents.second = Int(seconds)
         
         return Calendar.current.date(byAdding: dateComponents, to: self)!
+    }
+}
+
+public extension Int {
+    /// Returns a random Int point number between 0 and Int.max
+    public static var random: Int {
+        return Int.random(n: Int.max)
+    }
+    /// Random integer between 0 and n-1
+    public static func random(n: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(n)))
+    }
+    /// Random integer between min and max
+    public static func random(min: Int, max: Int) -> Int {
+        return Int.random(n: max - min + 1) + min
     }
 }

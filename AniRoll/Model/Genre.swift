@@ -14,6 +14,7 @@ class Genre: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var lastUpdate: Date = Date()
+    //let series = LinkingObjects(fromType: Serie.self, property: "genre")
     
     override static func primaryKey() -> String? {
         return "id"

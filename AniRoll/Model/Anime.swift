@@ -44,4 +44,20 @@ class Airing: Object {
     @objc dynamic var time: String = ""
     @objc dynamic var countdown: Int = 0
     @objc dynamic var next_episode: Int = 0
+    
+    var toString: String {
+        return String(format:
+            "Time: %@, Countdown: %d, Next episode: %d",
+            self.time, self.countdown, self.next_episode
+        )
+    }
+}
+
+enum AnimeSource: String {
+    case original = "Original"
+    case manga = "Manga"
+    case lightNovel = "Light Novel"
+    case visualNovel = "Visual Novel"
+    case videoGame = "Video Game"
+    case other = "Other"
 }

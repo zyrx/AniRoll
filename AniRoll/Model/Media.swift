@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Media Types
+/// @link http://anilist-api.readthedocs.io/en/latest/series.html#media-types
 enum Media: Int {
     case tv
     case tvShort
@@ -39,5 +41,14 @@ enum Media: Int {
         case .manhua: return "Manhua"
         case .manhwa: return "Manhwa"
         }
+    }
+    
+    static func `init`(from string: String) -> Media? {
+        var i = 0
+        while let item = Media(rawValue: i) {
+            if item.name == string { return item }
+            i += 1
+        }
+        return nil
     }
 }

@@ -40,7 +40,8 @@ class App: NSObject {
             Serie.self,
             ScoreDistribution.self,
             ListStats.self,
-            Genre.self
+            Genre.self,
+            Airing.self
         ]
         // Use the default directory, but replace the filename with the username
         if(inMemory) {

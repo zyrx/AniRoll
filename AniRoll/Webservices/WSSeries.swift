@@ -117,26 +117,43 @@ class WSSeries: WSBase {
             print(json.stringValue)
         }
     }
-    
+
     /// Browse - Returns up to 40 small series models if paginating.
     /// @link http://anilist-api.readthedocs.io/en/latest/series.html#browse
-    func browse(type serieType: SerieType) {
+    func browse(type serieType: SerieType, parameters browseParameters: BrowseParameters? = nil) {
         let path = String(format: "browse/%@", serieType.name)
-        /*
-        let parameters: Parameters = [
-            "year": "2014",
-            "season": "winter", // SerieSeason
-            "type": "anime",
-            "status": "xxxxx",
-            "genres": "Action,Comedy",
-            "genres_exclude": "Drama",
-            "sort": "id",
-            "airing_data": "true",
-            "full_page": "true",
-            "page": 0
-        ]
-        */
-        self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
+        var parameters: Parameters = Parameters()
+        if let year = browseParameters?.year {
+            parameters["year"] = year
+        }
+        if let season = browseParameters?.season {
+            parameters["season"] = season.rawValue
+        }
+        if let type = browseParameters?.type {
+            parameters["type"] = type.name
+        }
+        if let status = browseParameters?.status {
+            parameters["status"] = status
+        }
+        if let genres = browseParameters?.genres {
+            parameters["genres"] = genres.map({$0.name}).reduce(",", +)
+        }
+        if let genres_exclude = browseParameters?.genres_exclude {
+            parameters["genres_exclude"] = genres_exclude.map({$0.name}).reduce(",", +)
+        }
+        if let sort = browseParameters?.sort {
+            parameters["sort"] = sort
+        }
+        if let airing_data = browseParameters?.airing_data {
+            parameters["airing_data"] = airing_data.description
+        }
+        if let full_page = browseParameters?.full_page {
+            parameters["full_page"] = full_page ? "true" : "false"
+        }
+        if let page = browseParameters?.page {
+            parameters["page"] = page
+        }
+        self.manager.request(self.host + path, method: .get, parameters: parameters, headers: self.headers)
             .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
                 self.delegate?.onResponseError?(error: error)
@@ -155,17 +172,6 @@ class WSSeries: WSBase {
             }
             self.delegate?.wsSeriesDelegate?(series: series, type: serieType)
         }
-//        Url Parms:
-//        year           : 4 digit year e.g. "2014"
-//        season         : "winter" || "spring" || "summer" || "fall"
-//        type           : (See types table above)
-//        status         : (See status types table above)
-//        genres         : Comma separated genre strings. e.g. "Action,Comedy" Returns series that have ALL the genres.
-//        genres_exclude : Comma separated genre strings. e.g. "Drama" Excludes series that have ANY of the genres.
-//        sort           : "id" || "score" || "popularity" || "start_date" || "end_date" Sorts results, default ascending order. Append "-desc" for descending order e.g. "id-desc"
-//        airing_data    : "true" Includes anime airing data in small models
-//        full_page      : "true" Returns all available results. Ignores pages. Only available when status="Currently Airing" or season is included
-//        page           : int
     }
     
     /// Genre List - List of genres for use with browse queries
