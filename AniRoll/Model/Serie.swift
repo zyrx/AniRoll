@@ -11,6 +11,7 @@ import RealmSwift
 import SwiftyJSON
 
 /// A series is either an anime or manga. {series_type} is either ‘anime’ or ‘manga’.
+/// @link http://anilist-api.readthedocs.io/en/latest/series.html#series
 class Serie: Object {
     // MARK: - Serie model values
     /// id: Int - Unique serie identifier
@@ -100,21 +101,21 @@ class Serie: Object {
         return Media(from: self.media_type)
     }
     var startDate: String {
-        guard self.start_date_fuzzy > 0 else { return "" }
+        guard self.start_date_fuzzy > 0 else { return "-" }
         let date = Date(timeIntervalSince1970: TimeInterval(self.start_date_fuzzy))
-        return date.toString(dateFormat: "dd-MMM-yyyy")
+        return date.toString(dateFormat: "EEEE, MMM d, yyyy")
     }
     var endDate: String {
-        guard self.end_date_fuzzy > 0 else { return "" }
-        let date = Date(timeIntervalSince1970: TimeInterval(self.start_date_fuzzy))
-        return date.toString(dateFormat: "dd-MMM-yyyy")
+        guard self.end_date_fuzzy > 0 else { return "-" }
+        let date = Date(timeIntervalSince1970: TimeInterval(self.end_date_fuzzy))
+        return date.toString(dateFormat: "EEEE, MMM d, yyyy")
     }
     var seasonString: String {
         let year = Int(self.season / 10)
         guard let serieSeason = SerieSeason(rawValue: self.season - (year * 10)) else {
-            return ""
+            return "-"
         }
-        return String(format: "%@ @d", serieSeason.name, year + 2000)
+        return String(format: "%@ %d", serieSeason.name, year + (year > Date().year % 100 ? 1900 : 2000 ))
     }
     var serieStatus: SerieStatus {
         if case .anime = self.type {
@@ -124,6 +125,11 @@ class Serie: Object {
             return SerieStatus(from: self.publishing_status)
         }
         return .unknow
+    }
+    var updatedAt: String {
+        guard self.updated_at > 0 else { return "-" }
+        let date = Date(timeIntervalSince1970: TimeInterval(self.updated_at))
+        return date.toString(dateFormat: "EEEE, MMM d, yyyy")
     }
     
     override static func primaryKey() -> String? {
@@ -175,6 +181,70 @@ class Serie: Object {
     }
 }
 
+/// Small Serie Model
+struct SerieSmall {
+    var id: Int = 0
+    var series_type: String
+    var title_romaji: String
+    var title_english: String
+    var title_japanese: String
+    var media_type: String
+    var start_date_fuzzy: Int
+    var end_date_fuzzy: Int
+    let synonyms: [String]
+    let genres: [String]
+    var adult: Bool
+    var average_score: Double
+    var popularity: Int
+    var image_url_sml: String
+    var image_url_med: String
+    var image_url_lge: String
+    var updated_at: Int
+    var total_episodes: Int
+    var airing_status: String
+    var total_chapters: Int
+    var publishing_status: String = ""
+    
+    init?(_ json: JSON) {
+        guard let id = json["id"].int, let series_type = json["series_type"].string else {
+            return nil
+        }
+        self.id = id
+        self.series_type = series_type
+        self.title_romaji = json["title_romaji"].stringValue
+        self.title_english = json["title_english"].stringValue
+        self.title_japanese = json["title_japanese"].stringValue
+        self.media_type = json["type"].stringValue
+        self.start_date_fuzzy = json["start_date_fuzzy"].intValue
+        self.end_date_fuzzy = json["end_date_fuzzy"].intValue
+        var synonyms = [String]()
+        for item in json["synonyms"].arrayValue {
+            if let synonym = item.string {
+                synonyms.append(synonym)
+            }
+        }
+        self.synonyms = synonyms
+        var genres = [String]()
+        for item in json["genres"].arrayValue {
+            if let genre = item.string {
+                genres.append(genre)
+            }
+        }
+        self.genres = genres
+        self.adult = json["adult"].boolValue
+        self.average_score = json["average_score"].doubleValue
+        self.popularity = json["popularity"].intValue
+        self.image_url_sml = json["image_url_sml"].stringValue
+        self.image_url_med = json["image_url_med"].stringValue
+        self.image_url_lge = json["image_url_lge"].stringValue
+        self.updated_at = json["updated_at"].intValue
+        self.total_episodes = json["total_episodes"].intValue
+        self.airing_status = json["airing_status"].stringValue
+        self.total_chapters = json["total_chapters"].intValue
+        self.publishing_status = json["publishing_status"].stringValue
+    }
+}
+
 struct NewSerie {
     /// SerieType
     var type: SerieType
@@ -223,14 +293,6 @@ struct NewSerie {
         case .unknow: return ""
         }
     }
-    var toString: String {
-        switch self {
-        case .anime: return "Anime"
-        case .manga: return "Manga"
-        case .unknow: return ""
-        }
-    }
-    
     static func `init`(from string: String) -> SerieType {
         var i = 0
         while let item = SerieType(rawValue: i) {

@@ -59,3 +59,20 @@ class User: Object {
         self.notifications = json["notifications"].intValue
     }
 }
+
+struct UserSmall {
+    var id: Int
+    var display_name: String
+    var image_url_lge: String
+    var image_url_med: String
+    
+    init?(_ json: JSON) {
+        guard let id = json["id"].int, let display_name = json["display_name"].string else {
+            return nil
+        }
+        self.id = id
+        self.display_name = display_name
+        self.image_url_lge = json["image_url_lge"].stringValue
+        self.image_url_med = json["image_url_med"].stringValue
+    }
+}
