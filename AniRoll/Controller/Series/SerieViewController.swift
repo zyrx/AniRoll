@@ -14,11 +14,15 @@ import RealmSwift
 class SerieViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var serieImageView: UIImageView!
+    @IBOutlet weak var serieBannerImageView: UIImageView!
+    @IBOutlet weak var serieDescriptionTextView: UITextView!
     
     var serieInformation: [(title: String, value: String)]?
     
     /// image_url_sml || image_url_med || image_url_lge: String - Image url. 24x39* (Not available for manga) || 93x133* || Image url. 225x323*
-    @IBOutlet weak var serieImageView: UIImageView!
     /// image_url_banner: String? - Image url. 1720x390*
     @IBOutlet weak var serieLandscapeImageView: UIImageView!
     /// series_type: String - Anime or Manga
@@ -93,79 +97,87 @@ class SerieViewController: UIViewController {
             self.serie = realm.object(ofType: Serie.self, forPrimaryKey: id)
         }
     }
-    var serie: Serie? {
-        didSet {
-            guard let serie = self.serie else { return }
-            self.reloadSerieInformation(for: serie)
-        }
-    }
+    var serie: Serie?
     
     private func reloadSerieInformation(for serie: Serie) {
+        if let url = URL(string: serie.image_url_lge) {
+            self.serieImageView.af_setImage(withURL: url)
+        }
+        if let image_url_banner = serie.image_url_banner, let url = URL(string: image_url_banner) {
+            self.serieBannerImageView.af_setImage(withURL: url)
+        }
         var serieInformation = [(String, String)]()
-        serieInformation.append(("Serie Type:", serie.type.toString))
-        serieInformation.append(("Title:", "\(serie.title_romaji) (\(serie.title_japanese))"))
-        serieInformation.append(("Media Type:", serie.media_type))
-        serieInformation.append(("Start Date:", serie.startDate))
-        serieInformation.append(("End Date:", serie.endDate))
-        serieInformation.append(("Season:", serie.seasonString))
+        serieInformation.append(("Serie Type", serie.type.name.capitalizeFirstLetter))
+        serieInformation.append(("Title", "\(serie.title_romaji) (\(serie.title_japanese))"))
+        serieInformation.append(("Media Type", serie.media_type))
+        serieInformation.append(("Start Date", serie.startDate))
+        serieInformation.append(("End Date", serie.endDate))
+        serieInformation.append(("Season", serie.seasonString))
         if let description = serie.desc {
-            serieInformation.append(("Description:", description))
+            serieInformation.append(("Description", description))
         }
         let synonyms = serie.synonyms.map({$0.value})
         if synonyms.count > 0 {
-            serieInformation.append(("Synonyms:", synonyms.reduce(", ", +)))
+            serieInformation.append(("Synonyms", synonyms.joined(separator: ", ")))
         }
         let genres = serie.genres.map({$0.value})
         if genres.count > 0 {
-            serieInformation.append(("Genres:", genres.reduce(", ", +)))
+            serieInformation.append(("Genres", genres.joined(separator: ", ")))
         }
-        serieInformation.append(("Adult Content:", serie.adult ? "Yes" : "No"))
+        serieInformation.append(("Adult Content", serie.adult ? "Yes" : "No"))
         // @TODO: Following lines
         // Use emoji for this
-        serieInformation.append(("Average Score:", "\(serie.average_score)"))
-        serieInformation.append(("Popularity:", serie.title_romaji))
+        serieInformation.append(("Average Score", "\(serie.average_score)"))
+        serieInformation.append(("Popularity", "\(serie.popularity)"))
         // Use emoji for this
-        serieInformation.append(("Favorite:", serie.favourite ? "Yes" : "No"))
+        serieInformation.append(("Favorite", serie.favourite ? "Yes" : "No"))
         // Move to view body
-        serieInformation.append(("Updated At:", "\(serie.updated_at)"))
+        serieInformation.append(("Updated At", serie.updatedAt))
         /// score_distribution: [] - 0 - 100 distribution object
         if let score_distribution = serie.score_distribution {
-            serieInformation.append(("Score Distribution:", score_distribution.toString))
+            serieInformation.append(("Score Distribution", score_distribution.toString))
         }
         if let list_stats = serie.list_stats {
-            serieInformation.append(("List Stats:", list_stats.toString))
+            serieInformation.append(("List Stats", list_stats.toString))
         }
         // Anime model only values
         if case .anime = serie.type {
-            serieInformation.append(("Episodes:", "\(serie.total_episodes)"))
-            serieInformation.append(("Duration:", "\(serie.duration) Minutes"))
-            serieInformation.append(("Airing:", serie.serieStatus.anime))
+            serieInformation.append(("Episodes", "\(serie.total_episodes)"))
+            serieInformation.append(("Duration", "\(serie.duration) Minutes"))
+            serieInformation.append(("Airing", serie.serieStatus.anime))
             if let youtube_id = serie.youtube_id {
                 // UIApplication.sharedApplication().openURL("youtube://youtube_id")
-                serieInformation.append(("YouTube:", String(format: "https://youtu.be/%@", youtube_id)))
+                serieInformation.append(("YouTube", String(format: "https://youtu.be/%@", youtube_id)))
             }
             if let hashtag = serie.hashtag {
-                serieInformation.append(("Twitter:", String(format: "https://twitter.com/search?q=%23%@", hashtag)))
+                serieInformation.append(("Twitter", String(format: "https://twitter.com/search?q=%23%@", hashtag)))
             }
             if let source = serie.source {
-                serieInformation.append(("Source:", source))
+                serieInformation.append(("Source", source))
             }
             if let airing = serie.airing {
-                serieInformation.append(("Airing Stats:", airing.toString))
+                serieInformation.append(("Airing Stats", airing.toString))
             }
         }
         // Manga model only values
         if case .manga = serie.type {
-            serieInformation.append(("Total Chapter:", "\(serie.total_chapters)"))
-            serieInformation.append(("Total Volumes:", "\(serie.total_volumes)"))
-            serieInformation.append(("Publishing Status:", serie.serieStatus.manga))
+            serieInformation.append(("Total Chapter", "\(serie.total_chapters)"))
+            serieInformation.append(("Total Volumes", "\(serie.total_volumes)"))
+            serieInformation.append(("Publishing Status", serie.serieStatus.manga))
         }
         self.serieInformation = serieInformation
-        //self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let serie = self.serie else { return }
+        self.reloadSerieInformation(for: serie)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

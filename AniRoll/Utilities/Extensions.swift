@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension String {
+    public var capitalizeFirstLetter: String {
+        guard let first = self.first else {
+            return ""
+        }
+        return String(first).capitalized + String(self.dropFirst())
+    }
+}
+
 extension UIView {
     var x: CGFloat {
         get { return self.frame.origin.x }
@@ -56,21 +65,11 @@ extension Date {
     func seconds(from: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: from, to: self).second ?? -1
     }
-    func offset(from: Date) -> String {
-        if years(from: from) > 0 { return "\(years(from: from))y"   }
-        if months(from: from)  > 0 { return "\(months(from: from))M"  }
-        if weeks(from: from)   > 0 { return "\(weeks(from: from))w"   }
-        if days(from: from)    > 0 { return "\(days(from: from))d"    }
-        if hours(from: from)   > 0 { return "\(hours(from: from))h"   }
-        if minutes(from: from) > 0 { return "\(minutes(from: from))m" }
-        if seconds(from: from) > 0 { return "\(seconds(from: from))s" }
-        return ""
-    }
-    func getDayOfYear() -> Int {
-        return Calendar.current.ordinality(of: .day, in: .year, for: self) ?? -1
-    }
-    func getYear() -> Int {
+    var year: Int {
         return Calendar.current.component(.year, from: self)
+    }
+    var month: Int {
+        return Calendar.current.component(.month, from: self)
     }
     func add(days: UInt) -> Date {
         var dateComponents = DateComponents()

@@ -27,8 +27,8 @@ class WSCharacters: WSBase {
     ///     * Small model anime staff
     ///     * Small model manga staff
     /// @link http://anilist-api.readthedocs.io/en/latest/characters.html#basic
-    func getCharacter(id: Int, page: Bool = false) {
-        let path = String(format: "character/%d", id) + (page ? "/page" : "")
+    func getCharacter(id: String, page: Bool = false) {
+        let path = String(format: "character/%@", id) + (page ? "/page" : "")
         self.manager.request(self.host + path, method: .get, parameters: nil, headers: self.headers)
             .responseJSON { response in
             if case .failure(let error as NSError) = response.result {
@@ -48,7 +48,7 @@ class WSCharacters: WSBase {
     
     /// Favourite - Toggle favourite
     /// @link http://anilist-api.readthedocs.io/en/latest/characters.html#favourite-post
-    func toggleFavourite(id: Int) {
+    func toggleFavourite(id: String) {
         let path = "character/favourite"
         let parameters: Parameters = ["id": id]
         self.manager.request(self.host + path, method: .post, parameters: parameters, headers: self.headers)

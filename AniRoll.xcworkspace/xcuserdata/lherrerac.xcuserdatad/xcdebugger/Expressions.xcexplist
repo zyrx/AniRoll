@@ -11,12 +11,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Serie.init(_:):Serie.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "json[&quot;season&quot;].int">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in WSSerie.getSeries(type:user:):WSSeries.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.headers">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Serie.seasonString.getter:Serie.swift">
       </ContextState>
       <ContextState
          contextName = "WSUser.getUser(id:):WSUser.swift">
