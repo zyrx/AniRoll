@@ -1,6 +1,6 @@
 AniRoll (iOS)
 =============
-AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using [Analist API](http://anilist-api.readthedocs.io/) to display the serie's data and any related data available. 
+AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using [Analist API](http://anilist-api.readthedocs.io/) to display the serie's data and any related data available.
 
 ## Anilist Features
 * Custom Lists: Create your own personal list to further categorize your anime & manga
@@ -12,9 +12,9 @@ AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using
 
 ## Bonus Features
 * User and profile connection (plus favorite series)
-* Multiple collection views at home table view (ala netflix)
+* Multiple collection views at home table view
 * Reachability
-* Use offline persistance (CoreData or Realm)
+* Use offline persistence (CoreData or Realm)
 * Filtering (look at series/browse section)
 * Play youtube’s video in a modal view (you can use the SDK)
 * Character’s complete info
@@ -38,58 +38,16 @@ search.
 * password
 
 ### Browse Anime
-1. Year
-  * 2009 - 2018
-2. Season
-  * Winter
-  * Spring
-  * Summer
-  * Fall
-3. Status
-  * Not Yet Aired
-  * Currently Airing
-  * Finished Airing
-  * Cancelled
-4. Type
-  * Tv
-  * Movie
-  * Special
-  * OVA
-  * ONA
-  * Tv Short
-5. Sort
-  * Score
-  * Popularity
-  * Start Date
-  * End Date
-  * Date Added
-6. Genres
-  * Action
-  * Adventure
-  * Comedy
-  * Drama
-  * Ecchi
-  * Fantasy
-  * Horror
-  * Mahou Shoujo
-  * Mecha
-  * Music
-  * Mystery
-  * Psychological
-  * Romance
-  * Sci-Fi
-  * Slice of Life
-  * Sports
-  * Supernatural
-  * Thrille
-7. Tags
-  * Theme
-  *   * ...
-  * Cast
-  *   * ...
-  * Setting
-  *   * ...
-  * Technical
-  *   * ...
-  * Demographic
-  *   * ...
+Use the following filters to browse anime:
+- Year
+- Season
+- Status
+- Type
+- Sort
+- Genres
+- Tags
+
+## Screenshots
+Launch Screen | Login
+-- | --
+![aniroll-launchscreen](https://github.com/zyrx/AniRoll/assets/1212083/5081b6c9-c078-45f4-956b-3495f3b098d4) | ![aniroll-login](https://github.com/zyrx/AniRoll/assets/1212083/7022a416-be97-43b3-a768-4fee53780530)
