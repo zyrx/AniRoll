@@ -2,6 +2,10 @@ AniRoll (iOS)
 =============
 AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using [Analist API](http://anilist-api.readthedocs.io/) to display the serie's data and any related data available.
 
+## Copyright
+* Copyright (C) 2023 Lech H. Conde - Open Source Matters. All rights reserved.
+* Distributed under the GNU General Public License version 3 or later. Read [License details](LICENSE.md) or see <https://www.gnu.org/licenses/>.
+
 ## Anilist Features
 * Custom Lists: Create your own personal list to further categorize your anime & manga
 * 6+ Scoring systems: Score with either 10-point, decimal, 5-star, or any other of our scoring systems.
