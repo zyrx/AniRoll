@@ -5,7 +5,7 @@ import ProjectDescriptionHelpers
 // MARK: - Project
 let projectName = "AniRoll"
 
-let infoPlist: [String: InfoPlist.Value] = [
+let infoPlist: [String: Plist.Value] = [
     "CFBundleShortVersionString": "1.0",
     "CFBundleVersion": "1",
     "UIMainStoryboardFile": "",
