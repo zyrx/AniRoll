@@ -6,9 +6,10 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
-import UIKit
-import RealmSwift
 import AlamofireImage
+import AniList
+import RealmSwift
+import UIKit
 
 class SeriesViewController: UIViewController, WSSeriesDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     

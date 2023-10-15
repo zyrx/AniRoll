@@ -1,33 +1,29 @@
+//
+//  Project.swift
+//  AniRollManifests
+//
+//  Created by Lech H. Conde on 10/12/23.
+//
+
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-
-// MARK: - Project
-private let projectName = "AniRoll"
-
-private let infoPlist: [String: Plist.Value] = [
-    "CFBundleShortVersionString": "1.0",
-    "CFBundleVersion": "1",
-    "UIMainStoryboardFile": "",
-    "UILaunchStoryboardName": "LaunchScreen"
-]
+private let projectName = "AniList"
 
 private let mainTarget = Target(
     name: projectName,
     platform: .iOS,
-    product: .app,
+    product: .framework,
     bundleId: "net.mavels.\(projectName)",
-    infoPlist: .extendingDefault(with: infoPlist),
-    sources: ["Targets/\(projectName)/Sources/**"],
-    resources: ["Targets/\(projectName)/Resources/**"],
+    infoPlist: .default,
+    sources: ["Sources/**"],
+    resources: [],
     dependencies: [
         .external(name: "Alamofire"),
         .external(name: "AlamofireImage"),
         .external(name: "SwiftyJSON"),
-        .external(name: "SnapKit"),
         .external(name: "Realm"),
-        .external(name: "RealmSwift"),
-        .project(target: "AniList", path: "Projects/AniList")
+        .external(name: "RealmSwift")
     ]
 )
 
@@ -37,12 +33,12 @@ private let testTarget = Target(
     product: .unitTests,
     bundleId: "net.mavels.\(projectName)Tests",
     infoPlist: .default,
-    sources: ["Targets/\(projectName)/Tests/**"],
+    sources: ["Tests/**"],
     dependencies: [
         .target(name: "\(projectName)")
 ])
 
-let project =  Project(
+let aniListApi =  Project(
     name: projectName,
     organizationName: "mavels.net",
     targets: [

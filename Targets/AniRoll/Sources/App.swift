@@ -6,6 +6,7 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
+import AniList
 import Foundation
 import RealmSwift
 
