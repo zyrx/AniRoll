@@ -6,8 +6,9 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
-import UIKit
+import AniList
 import RealmSwift
+import UIKit
 
 /// Series - A series is either an anime or manga. {series_type} is either ‘anime’ or ‘manga’.
 /// @link http://anilist-api.readthedocs.io/en/latest/series.html#series

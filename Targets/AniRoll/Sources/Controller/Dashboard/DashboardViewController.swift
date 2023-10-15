@@ -6,8 +6,9 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
-import UIKit
+import AniList
 import RealmSwift
+import UIKit
 
 class DashboardViewController: UIViewController, WSUserDelegate {
     
@@ -41,7 +42,7 @@ class DashboardViewController: UIViewController, WSUserDelegate {
     }
     
     // MARK: - WSUserDelegate
-    func wsUserDelegate(user: User?) {
+    func wsUserDelegate(user: AniList.User?) {
         LoadingActivity.hide()
         guard let user = user else {
              AlertController.alert(title: "", message: "The user doesn't exist. Please try again.")
@@ -57,7 +58,7 @@ class DashboardViewController: UIViewController, WSUserDelegate {
         }
     }
     
-    func wsUserDelegate(users: [User]) {
+    func wsUserDelegate(users: [AniList.User]) {
         // Do stuff
     }
     

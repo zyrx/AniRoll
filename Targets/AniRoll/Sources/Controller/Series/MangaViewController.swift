@@ -6,8 +6,9 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
-import UIKit
+import AniList
 import RealmSwift
+import UIKit
 
 class MangaViewController: SeriesViewController {
     override func viewDidLoad() {

@@ -6,9 +6,10 @@
 //  Copyright © 2017 Lech H. Conde. All rights reserved.
 //
 
-import UIKit
-import RealmSwift
+import AniList
 import AlamofireImage
+import RealmSwift
+import UIKit
 
 class AnimeViewController: SeriesViewController {
     override func viewDidLoad() {
