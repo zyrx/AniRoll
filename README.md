@@ -6,6 +6,17 @@ AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using
 * Copyright (C) 2023 Lech H. Conde - Open Source Matters. All rights reserved.
 * Distributed under the GNU General Public License version 3 or later. Read [License details](LICENSE.md) or see <https://www.gnu.org/licenses/>.
 
+## Project Generation
+We're using [Tuist](https://docs.tuist.io/tutorial/get-started) command line tool to facilitate the project's generation.
+To install tuist run the following command in your terminal:
+```
+curl -Ls https://install.tuist.io | bash
+```
+To generate the project you just have to run the following command from the project root directory:
+```
+tuist generate
+```
+
 ## Anilist Features
 * Custom Lists: Create your own personal list to further categorize your anime & manga
 * 6+ Scoring systems: Score with either 10-point, decimal, 5-star, or any other of our scoring systems.
