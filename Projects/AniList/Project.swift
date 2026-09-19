@@ -6,15 +6,15 @@
 //
 
 import ProjectDescription
-import ProjectDescriptionHelpers
 
 private let projectName = "AniList"
 
-private let mainTarget = Target(
+private let mainTarget = Target.target(
     name: projectName,
-    platform: .iOS,
+    destinations: .iOS,
     product: .framework,
     bundleId: "net.mavels.\(projectName)",
+    deploymentTargets: .iOS("15.0"),
     infoPlist: .default,
     sources: ["Sources/**"],
     resources: [],
@@ -27,11 +27,12 @@ private let mainTarget = Target(
     ]
 )
 
-private let testTarget = Target(
+private let testTarget = Target.target(
     name: "\(projectName)Tests",
-    platform: .iOS,
+    destinations: .iOS,
     product: .unitTests,
     bundleId: "net.mavels.\(projectName)Tests",
+    deploymentTargets: .iOS("15.0"),
     infoPlist: .default,
     sources: ["Tests/**"],
     dependencies: [
