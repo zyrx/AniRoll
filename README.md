@@ -8,14 +8,16 @@ AniRoll is an [Anilist project](https://anilist.co) implementation for iOS using
 
 ## Project Generation
 We're using [Tuist](https://docs.tuist.io/tutorial/get-started) command line tool to facilitate the project's generation.
-To install tuist run the following command in your terminal:
+Install Tuist with Homebrew:
 ```
-curl -Ls https://install.tuist.io | bash
+brew install --cask tuist
 ```
-To generate the project you just have to run the following command from the project root directory:
+From the project root, resolve the Swift package dependencies and generate the workspace:
 ```
-tuist generate
+tuist install
+tuist generate --no-open
 ```
+Open `AniRoll.xcworkspace` (not either generated `.xcodeproj`) in Xcode.
 
 ## Anilist Features
 * Custom Lists: Create your own personal list to further categorize your anime & manga

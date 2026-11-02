@@ -1,5 +1,4 @@
 import ProjectDescription
-import ProjectDescriptionHelpers
 
 
 // MARK: - Project
@@ -9,14 +8,24 @@ private let infoPlist: [String: Plist.Value] = [
     "CFBundleShortVersionString": "1.0",
     "CFBundleVersion": "1",
     "UIMainStoryboardFile": "",
-    "UILaunchStoryboardName": "LaunchScreen"
+    "UILaunchStoryboardName": "LaunchScreen",
+    "UIApplicationSupportsMultipleScenes": false,
+    "UIApplicationSceneManifest": [
+        "UISceneConfigurations": [
+            "UIWindowSceneSessionRoleApplication": [[
+                "UISceneConfigurationName": "Default Configuration",
+                "UISceneDelegateClassName": "$(PRODUCT_MODULE_NAME).SceneDelegate"
+            ]]
+        ]
+    ]
 ]
 
-private let mainTarget = Target(
+private let mainTarget = Target.target(
     name: projectName,
-    platform: .iOS,
+    destinations: .iOS,
     product: .app,
     bundleId: "net.mavels.\(projectName)",
+    deploymentTargets: .iOS("15.0"),
     infoPlist: .extendingDefault(with: infoPlist),
     sources: ["Targets/\(projectName)/Sources/**"],
     resources: ["Targets/\(projectName)/Resources/**"],
@@ -31,11 +40,12 @@ private let mainTarget = Target(
     ]
 )
 
-private let testTarget = Target(
+private let testTarget = Target.target(
     name: "\(projectName)Tests",
-    platform: .iOS,
+    destinations: .iOS,
     product: .unitTests,
     bundleId: "net.mavels.\(projectName)Tests",
+    deploymentTargets: .iOS("15.0"),
     infoPlist: .default,
     sources: ["Targets/\(projectName)/Tests/**"],
     dependencies: [

@@ -3,26 +3,16 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    
     private let dependencies: Dependencies = DependencyContainer()
 
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
-    ) -> Bool {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        
+    func configure(_ window: UIWindow) {
         let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
         window.rootViewController = storyboard.instantiateViewController(withIdentifier: "LaunchScreen")
         window.makeKeyAndVisible()
-        
-        installDependenciesAndStart(in: window)
 
-        return true
+        installDependenciesAndStart(in: window)
     }
-    
+
     private func installDependenciesAndStart(in window: UIWindow) {
         Task {
             do {
